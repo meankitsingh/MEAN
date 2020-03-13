@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-article">
+      <div class="card card-outline-secondary">
+        <div class="card-header">
+          <h3 class="mb-0">Edit Article</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+ 
+            <div class="form-group">
+                <label>Title</label>
+                <input class="form-control" type="text" formControlName="title" name="title">
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.title.errors?.required">
+                  Title is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" formControlName="description" name="description" rows="4" cols="50"></textarea>
+                <!-- error -->
+                <div class="invalid-feedback" *ngIf="submitted && myForm.description.errors?.required">
+                  Description is required.
+                </div>
+              </div>
+              <div class="form-group">
+                <label>UploadImage</label>
+                <!-- <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button> -->
+                <input type="file" #filePicker (change)="onImagePicked($event)">
+              </div>        
+            <div class="form-group">
+              <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+            </div>
+          </form>
+        </div>
+      </div><!-- form  -->
+    </div>
+  </div>
+ 

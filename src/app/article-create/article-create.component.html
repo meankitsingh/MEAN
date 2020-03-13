@@ -1,0 +1,31 @@
+<div class="row justify-content-center">
+    <div class="col-md-4 register-article">
+      <div class="card-body">
+        <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label>Title</label>
+            <input class="form-control" type="text" formControlName="title" name="title">
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && title.errors?.required">
+              Title is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" formControlName="description" name="description" rows="4" cols="50"></textarea>
+            <!-- error -->
+            <div class="invalid-feedback" *ngIf="submitted && description.errors?.required">
+              Description is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label>UploadImage</label>
+            <input type="file" #filePicker (change)="onImagePicked($event)">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-lg btn-block" type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
